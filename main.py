@@ -4,9 +4,12 @@
 """
 
 
-import click
 import logging
 from pathlib import Path
+
+import click
+
+from src.parse import parse_file
 
 
 @click.command()
@@ -15,16 +18,25 @@ from pathlib import Path
     "input_file", type=click.Path(exists=True, dir_okay=False, path_type=Path)
 )
 @click.option(
-    "-d", "--debug", is_flag=True, default=False, help="Output debug logs to console"
+    "-d",
+    "--debug",
+    is_flag=True,
+    default=False,
+    help="Output debug logs to standard out",
 )
 def main(input_file, debug):
     """The main driver for the trebuchet program.
 
     INPUT_FILE is the file passed in to parse.
     """
-    if debug == True:
+    if debug is True:
         logging.basicConfig(level=logging.DEBUG)
-    logging.debug(f"{input_file} of type {type(input_file)} accepted")
+    logging.debug("%s of type %s accepted", input_file, type(input_file))
+
+    with open(input_file, "r", encoding="utf-8") as file:
+        for lines in parse_file(file):
+            print(lines)
+
     return
 
 
