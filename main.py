@@ -35,7 +35,8 @@ def main(input_file, debug):
 
     with open(input_file, "r", encoding="utf-8") as file:
         for lines in parse_file(file):
-            print(lines)
+            # TODO: Add them up
+            pass
 
     return
 
