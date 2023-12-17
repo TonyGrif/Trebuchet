@@ -33,11 +33,12 @@ def main(input_file, debug):
         logging.basicConfig(level=logging.DEBUG)
     logging.debug("%s of type %s accepted", input_file, type(input_file))
 
+    result = 0
     with open(input_file, "r", encoding="utf-8") as file:
         for lines in parse_file(file):
-            # TODO: Add them up
-            pass
+            result += lines[1]
 
+    print(f"The result is {result}")
     return
 
 

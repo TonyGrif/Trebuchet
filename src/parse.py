@@ -1,9 +1,9 @@
 """This module contains file parsing functions for the trebuchet program.
 """
 
-from typing import TextIO, Iterator, List, Tuple
-import re
 import logging
+import re
+from typing import Iterator, List, TextIO, Tuple
 
 
 def parse_file(file: TextIO) -> Iterator[Tuple[str, int]]:
