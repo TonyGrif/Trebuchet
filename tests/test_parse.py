@@ -23,8 +23,8 @@ class TestParse:
 
         with open(words_file, "r", encoding="utf-8") as f:
             line = parse_file(f)
-            next(line)
-            assert next(line) is None
+            assert next(line) == ("two1nine", 29)
+            assert next(line) == ("eighttwothree", 83)
 
     def test_line_parse(self):
         assert parse_line("1abc2") == [1, 2]
@@ -34,3 +34,5 @@ class TestParse:
 
         assert parse_line("abc123") == [1, 2, 3]
         assert parse_line("trebuchet") == []
+
+        assert parse_line("three2zero") == [3, 2, 0]
