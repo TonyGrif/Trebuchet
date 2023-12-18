@@ -20,7 +20,11 @@ def parse_file(file: TextIO) -> Iterator[Tuple[str, int]]:
         digits = parse_line(line.strip())
         logging.debug("%s parsed from %s", digits, line.strip())
 
-        result = int(str(digits[0]) + str(digits[-1]))
+        try:
+            result = int(str(digits[0]) + str(digits[-1]))
+        except IndexError as e:
+            logging.debug("%s produced %e", line.strip, e)
+            yield None
 
         logging.debug("%s returned", result)
         yield (line.strip(), result)

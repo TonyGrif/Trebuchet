@@ -36,7 +36,8 @@ def main(input_file, debug):
     result = 0
     with open(input_file, "r", encoding="utf-8") as file:
         for lines in parse_file(file):
-            result += lines[1]
+            if lines is not None:
+                result += lines[1]
 
     print(f"The result is {result}")
     return
