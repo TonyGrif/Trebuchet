@@ -30,3 +30,5 @@ class TestParse:
         assert parse_line("eightwothree") == [8, 2, 3]
         assert parse_line("abcone2threexyz") == [1, 2, 3]
         assert parse_line("twone") == [2, 1]
+
+        assert parse_line("sixsevensix") == [6, 7, 6]
