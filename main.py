@@ -40,7 +40,6 @@ def main(input_file, debug):
                 result += lines[1]
 
     print(f"The result is {result}")
-    return
 
 
 if __name__ == "__main__":
