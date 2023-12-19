@@ -3,8 +3,8 @@
 
 import logging
 import re
-from typing import Iterator, List, TextIO, Tuple
 from enum import Enum
+from typing import Iterator, List, TextIO, Tuple
 
 
 class Alias(Enum):
