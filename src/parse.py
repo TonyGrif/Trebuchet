@@ -44,6 +44,7 @@ def parse_file(file: TextIO) -> Iterator[Tuple[str, int]]:
             result = int(str(digits[0]) + str(digits[-1]))
         except IndexError as e:
             logging.debug("Returning None")
+            logging.exception("%s raised exception", line.strip())
             yield None
 
         logging.debug("%s returned", result)
