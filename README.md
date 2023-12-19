@@ -14,9 +14,10 @@ If this program is run without arguments, the following error message will be ou
 `Usage: main.py [OPTIONS] INPUT_FILE`
 
 ## Sample Execution
-When this program is run with `./main.py resources/part_one_example.txt`, the following
+When this program is run with `./main.py resources/example.txt`, the following
 output is generated:
-`The result is 142`
+`The result is 281`
 
 ## Prompt Answer
-The answer for part one is 55538.
+The answer for part one is **55538**. \
+The answer for part two is **54875**.
