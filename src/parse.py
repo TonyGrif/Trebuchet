@@ -10,16 +10,16 @@ from enum import Enum
 class Alias(Enum):
     """This enum contains single digit number/word pairs."""
 
-    zero = 0
-    one = 1
-    two = 2
-    three = 3
-    four = 4
-    five = 5
-    six = 6
-    seven = 7
-    eight = 8
-    nine = 9
+    ZERO = 0
+    ONE = 1
+    TWO = 2
+    THREE = 3
+    FOUR = 4
+    FIVE = 5
+    SIX = 6
+    SEVEN = 7
+    EIGHT = 8
+    NINE = 9
 
 
 def parse_file(file: TextIO) -> Iterator[Tuple[str, int]]:
@@ -76,7 +76,7 @@ def _word_to_digit(line: list) -> list:
     for numbers in Alias:
         has_elem = True
         while has_elem:
-            rgx = re.search(str(numbers.name), "".join(line))
+            rgx = re.search(str(numbers.name).lower(), "".join(line))
             if rgx is not None:
                 line.insert(rgx.span()[0] + 1, str(numbers.value))
                 logging.debug("Updated String: %s", "".join(line))
