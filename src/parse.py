@@ -34,7 +34,7 @@ def parse_file(file: TextIO) -> Iterator[Tuple[str, int]]:
     """
     for line in file:
         if line is None:
-            yield 0
+            yield None
 
         logging.debug("Parsing %s", line.strip())
         digits = parse_line(line.strip())
@@ -44,7 +44,7 @@ def parse_file(file: TextIO) -> Iterator[Tuple[str, int]]:
             result = int(str(digits[0]) + str(digits[-1]))
         except IndexError as e:
             logging.debug("Returning None")
-            yield 0
+            yield None
 
         logging.debug("%s returned", result)
         yield (line.strip(), result)
@@ -59,31 +59,28 @@ def parse_line(line: str) -> List[int]:
     Returns:
         A list containing all integers found.
     """
-    line = _word_to_digit(line)
+    line = "".join(_word_to_digit(list(line)))
     return [int(num) for num in re.findall(r"\d", line)]
 
 
-def _word_to_digit(line: str) -> str:
+def _word_to_digit(line: list) -> list:
     """Convert words in a string to digits.
 
     Parameters:
-        line(str): the string to edit.
+        line (list): the string to edit.
 
     Returns:
-        An updated string with the digits
-        at the first index of the word.
+        An updated list with the digits replacing
+        the numerical words.
     """
-    update_line = list(line)
-
     for numbers in Alias:
-        rgx = re.search(str(numbers.name), line)
-        if rgx is None:
-            continue
+        has_elem = True
+        while has_elem:
+            rgx = re.search(str(numbers.name), "".join(line))
+            if rgx is not None:
+                line.insert(rgx.span()[0] + 1, str(numbers.value))
+                logging.debug("Updated String: %s", "".join(line))
+            else:
+                has_elem = False
 
-        update_line.insert(rgx.span()[0], str(numbers.value))
-        update_line = (
-            update_line[: rgx.span()[0] + 1] + update_line[rgx.span()[0] + 2 :]
-        )
-        logging.debug("Updated String: %s", "".join(update_line))
-
-    return "".join(update_line)
+    return line
