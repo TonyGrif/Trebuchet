@@ -1,0 +1,43 @@
+[tool.poetry]
+name = "aoc-trebuchet"
+version = "0.1.0"
+description = "Python implementation of Advent of Code 2023 Day 1"
+authors = ["TonyGrif <TonyGriffin2000@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include="src"}]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+click = "^8.1.7"
+
+[tool.poetry.group.test.dependencies]
+pytest = "^8.1.1"
+pytest-cov = "^4.1.0"
+tox = "^4.14.2"
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.10.0"
+black = "^24.4.0"
+isort = "^5.13.2"
+pylint = "^3.1.0"
+ruff = "^0.3.4"
+flake8-pyproject = "^1.2.3"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+log_cli = "True"
+
+[tool.mypy]
+files = ["src"]
+
+[tool.isort]
+profile = "black"
+
+[tool.flake8]
+max-line-length = 88
+extend-ignore = ["E203", "E701"]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
