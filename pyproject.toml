@@ -23,6 +23,7 @@ isort = "^5.13.2"
 pylint = "^3.1.0"
 ruff = "^0.3.4"
 flake8-pyproject = "^1.2.3"
+poethepoet = "^0.26.1"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -37,6 +38,10 @@ profile = "black"
 [tool.flake8]
 max-line-length = 88
 extend-ignore = ["E203", "E701"]
+
+[tool.poe.tasks]
+test = "pytest --cov --cov-report term-missing"
+answer = "python main.py resources/puzzle_input.txt"
 
 [build-system]
 requires = ["poetry-core"]

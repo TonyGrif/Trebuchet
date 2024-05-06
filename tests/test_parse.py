@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pytest
 
-from parse import parse_file, parse_line
+from src.parse import parse_file, parse_line
 
 
 @pytest.fixture
