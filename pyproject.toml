@@ -27,7 +27,6 @@ poethepoet = "^0.26.1"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-log_cli = "True"
 
 [tool.mypy]
 files = ["src"]

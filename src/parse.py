@@ -4,7 +4,7 @@
 import logging
 import re
 from enum import Enum
-from typing import Iterator, List, TextIO, Tuple
+from typing import Iterator, List, TextIO, Tuple, Union
 
 
 class Alias(Enum):
@@ -22,7 +22,7 @@ class Alias(Enum):
     NINE = 9
 
 
-def parse_file(file: TextIO) -> Iterator[Tuple[str, int]]:
+def parse_file(file: TextIO) -> Iterator[Union[Tuple[str, int], None]]:
     """Parse the provided file for valid lines.
 
     Parameters:
@@ -40,6 +40,7 @@ def parse_file(file: TextIO) -> Iterator[Tuple[str, int]]:
         digits = parse_line(line.strip())
         logging.debug("%s parsed from %s", digits, line.strip())
 
+        result: int = 0
         try:
             result = int(str(digits[0]) + str(digits[-1]))
         except IndexError:
@@ -55,7 +56,7 @@ def parse_line(line: str) -> List[int]:
     """Parse the provided string for integers.
 
     Parameters:
-        line (str): the string to parse.
+        line (str): The string to parse.
 
     Returns:
         A list containing all integers found.
@@ -64,11 +65,11 @@ def parse_line(line: str) -> List[int]:
     return [int(num) for num in re.findall(r"\d", line)]
 
 
-def _word_to_digit(line: list) -> list:
+def _word_to_digit(line: List[str]) -> List[str]:
     """Convert words in a string to digits.
 
     Parameters:
-        line (list): the string to edit.
+        line (List[str]): The string to edit.
 
     Returns:
         An updated list with the digits replacing
