@@ -9,7 +9,7 @@ from pathlib import Path
 
 import click
 
-from src.parse import parse_file
+from trebuchet.parse import parse_file
 
 
 @click.command()
