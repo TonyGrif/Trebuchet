@@ -3,9 +3,17 @@ name = "aoc-trebuchet"
 version = "1.0.0"
 description = "Python implementation of Advent of Code 2023 Day 1"
 authors = ["TonyGrif <TonyGriffin2000@gmail.com>"]
+maintainers = ["TonyGrif <TonyGriffin2000@gmail.com>"]
+# homepage = ""
+# repository = ""
+# documentation = ""
+# keywords = [ "", ""]
 license = "MIT"
 readme = "README.md"
 packages = [{include="trebuchet"}]
+
+[tool.poetry.scripts]
+trebuchet = "trebuchet.__main__:main"
 
 [tool.poetry.dependencies]
 python = "^3.8"
@@ -31,13 +39,20 @@ testpaths = ["tests"]
 [tool.isort]
 profile = "black"
 
+[tool.pylint.typecheck]
+signature-mutators = [
+    "click.decorators.option",
+    "click.decorators.argument",
+    "click.decorators.version_option",
+]
+
 [tool.flake8]
 max-line-length = 88
 extend-ignore = ["E203", "E701"]
 
 [tool.poe.tasks]
 test = "pytest --cov --cov-report term-missing"
-answer = "python main.py resources/puzzle_input.txt"
+answer = "python -m trebuchet resources/puzzle_input.txt"
 _mypy = "mypy trebuchet/"
 _ruff = "ruff check trebuchet/"
 _pylint = "pylint trebuchet/"
