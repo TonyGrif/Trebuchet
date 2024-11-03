@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "aoc-trebuchet"
-version = "0.1.0"
+version = "1.0.0"
 description = "Python implementation of Advent of Code 2023 Day 1"
 authors = ["TonyGrif <TonyGriffin2000@gmail.com>"]
 license = "MIT"
@@ -41,6 +41,32 @@ extend-ignore = ["E203", "E701"]
 [tool.poe.tasks]
 test = "pytest --cov --cov-report term-missing"
 answer = "python main.py resources/puzzle_input.txt"
+_mypy = "mypy src/"
+_ruff = "ruff check src/"
+_pylint = "pylint src/"
+_flake = "flake8 src/"
+lint = [ "_mypy", "_ruff", "_pylint", "_flake" ]
+_imports = "isort src/"
+_format = "black src/"
+format = [ "_imports", "_format" ]
+
+[tool.tox]
+legacy_tox_ini = """
+    [tox]
+    requires =
+        tox>=4
+    env_list = py{39, 310, 311, 312}
+    isolated_build = true
+
+    [testenv]
+    description = Run the PyTest Suite.
+    skip_install = true
+    deps = poetry
+    commands_pre =
+        poetry install --only main,test
+    commands =
+        poetry run pytest --cov
+"""
 
 [build-system]
 requires = ["poetry-core"]
