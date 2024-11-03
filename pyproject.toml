@@ -5,7 +5,7 @@ description = "Python implementation of Advent of Code 2023 Day 1"
 authors = ["TonyGrif <TonyGriffin2000@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-packages = [{include="src"}]
+packages = [{include="trebuchet"}]
 
 [tool.poetry.dependencies]
 python = "^3.8"
@@ -28,9 +28,6 @@ poethepoet = "^0.26.1"
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 
-[tool.mypy]
-files = ["src"]
-
 [tool.isort]
 profile = "black"
 
@@ -41,13 +38,13 @@ extend-ignore = ["E203", "E701"]
 [tool.poe.tasks]
 test = "pytest --cov --cov-report term-missing"
 answer = "python main.py resources/puzzle_input.txt"
-_mypy = "mypy src/"
-_ruff = "ruff check src/"
-_pylint = "pylint src/"
-_flake = "flake8 src/"
+_mypy = "mypy trebuchet/"
+_ruff = "ruff check trebuchet/"
+_pylint = "pylint trebuchet/"
+_flake = "flake8 trebuchet/"
 lint = [ "_mypy", "_ruff", "_pylint", "_flake" ]
-_imports = "isort src/"
-_format = "black src/"
+_imports = "isort trebuchet/"
+_format = "black trebuchet/"
 format = [ "_imports", "_format" ]
 
 [tool.tox]
