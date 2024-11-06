@@ -1,65 +1,53 @@
-<!doctype html>
-<html lang="en-US">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="author" content="TonyGrif" />
-    <meta
-        name="description"
-        content="Home page for a Python implementation of
-                  Advent of Code (2023) Day 1." />
-    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/302/302149.png" type="image/x-icon" />
-    <title>Trebuchet</title>
-  </head>
-  <body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trebuchet</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Trebuchet</h2>
+    <nav class="main-links">
+      <a href="#intro">Home</a>
+      <a href="#installation">Installation</a>
+      <a href="#usage">Usage</a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <a href="https://adventofcode.com/2023/day/1">Advent of Code</a>
+      <a href="https://github.com/TonyGrif/trebuchet">GitHub</a>
+    </div>
+  </div>
+
+  <div class="content">
     <header>
-      <!-- Logo and Name -->
-      <nav>
-        <!-- TODO: Use AoC Logo -->
-        <a
-          href=https://adventofcode.com/2023/day/1
-          title="The advent of code problem being solved."
-          target="_blank">
-          Advent of Code 2023, Day 1
-        </a>
-        <!-- TODO: Create dropdown menu for libraries -->
-        <ul>
-          <li>
-            <a
-              href="https://click.palletsprojects.com/en/8.1.x/"
-              title="Information on the Click argument module."
-              target="_blank">
-              Click
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://docs.python.org/3/library/re.html"
-              title="Information on the Python regex module."
-              target="_blank">
-              Python Regex Module
-            </a>
-          </li>
-        </ul>
-        <!-- TODO: Add API Docs, sphinx -->
-        <!-- TODO: Use GitHub logo -->
-        <a href="https://github.com/TonyGrif/trebuchet"
-           title="GitHub repo containing source code.">
-           GitHub
-        </a>
-        <!-- About Me (?) -->
-        <!-- Search -->
-      </nav>
+      <h1>Trebuchet Documentation</h1>
     </header>
+    <main>
+      <section id="intro">
+        <h2>Introduction</h2>
+        <p>This script solves the Advent of Code Day One challenge for 2023</p>
+      </section>
+      <section id="installation">
+        <h2>Installation</h2>
+        <p>It is recommend to install this project through pip, the Python package manager.
+        <code>TODO</code></p>
 
-    <h1> Trebuchet </h1>
-    <p>
-      Trebuchet presents a solution to the <a href=https://adventofcode.com/2023/day/1>
-      AoC 2023 Day 1</a> in the form of a Python implementation. Using Click and Regex to
-      parse through the data, this program takes the summation of numbers found within
-      a text file.
-    </p>
-
-    <!-- TODO: Add running gif once visualization is completed -->
-
-  </body>
+        <h3>From Source</h3>
+        <p>This project makes use of <a href="https://python-poetry.org/">Poetry</a> for dependency
+        management and project management. With this project on your system, install all dependencies
+        through <code>poetry install</code>. This project can then be run through 
+        <code>poetry run trebuchet [args]</code></p>
+      </section>
+      <section id="usage">
+        <h2>Usage</h2>
+        <p>The basic usage for this project is <code>trebuchet [input_file]</code> wherein
+        the input file contains lines of characters to be parsed for numbers.
+        Further help can be found by supplying the <code>--help</code> flag.</p>
+      </section>
+    </main>
+  </div>
+</body>
 </html>
